@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ab5a57cf74.js" crossorigin="anonymous"></script>
+    <title>PARIS</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Header -->
+    <div id="map" style="height: 600px;"></div>
+    <header class="navbar">
+        <div class="logo">
+            <span class="title">Home Key</span>
+            <i class="fas fa-search"></i>
+        </div>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Customer Service</a></li>
+        </ul>
+        <div class="icons">
+            <i class="far fa-heart"></i>
+            <i class="fas fa-shopping-basket"></i>
+        </div>
+        <a href="#" class="toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </header>
+
+    <!-- Buttons -->
+    <section class="buttons">
+        <button class="btn" data-key="type" data-value="my room">my room</button>
+        <button class="btn" data-key="type" data-value="living room">living room</button>
+        <button class="btn" data-key="type" data-value="kitchen">kitchen</button>
+        <button class="btn" data-key="type" data-value="bathroom">bathroom</button>
+        <button class="btn" data-key="type" data-value="entrance">entrance</button>
+    </section>
+
+    <!-- Items -->
+    <ul class="items">
+
+    </ul>
+
+    <!-- 구글맵 api -->
+    <script defer src="./index.js"></script>
+    <script defer src=
+    "https://maps.googleapis.com/maps/api/js?key=AIzaSyApgcLznfOhJn0f4NCy6LmXfN_2sJJ0BXA&callback=initMap"></script>
+</body>
+</html>
