@@ -1,5 +1,5 @@
-# TalkingTravelPage
-TalkingTravel사이트의 메인페이지가 될 예정 (Fullstack)
+# TravelTalk
+TravelTalk사이트의 메인페이지가 될 예정 (Fullstack)
 
 ## 기능
 1. 카드를 버튼, 마우스를 통해 양옆으로 이동할 수 있다. -> ES6 이용
