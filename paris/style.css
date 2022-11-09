@@ -28,8 +28,24 @@ header {
     justify-content: space-between;
     font-size: var(--font-large);
     cursor: pointer;
-    margin: 10px;
 }
+.navbar {
+    height: 130px; /* 화면 이미지 고정 */
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA4MTFfMTQw%2FMDAxNTk3MTIyMTk1ODE5.ViqPxoBWkLB2-2RKvocG8iCaqRwnfOMMByAP-n_AS0Ag.IRbJCm38j5UeF4Fdn08fUrHNsYgtyJx688hzr95ta6gg.JPEG.parangusl_%2F%25C6%25C4%25B8%25AE%25C0%25DA%25C0%25AF%25BF%25A9%25C7%25E0%252C_%25C5%25D7%25B6%25F3%25BD%25BA_%25C0%25FC%25B8%25C1_%25C3%25D6%25B0%25ED_%25BF%25A1%25C5%25F5%25BE%25CB_%25B0%25B3%25BC%25B1%25B9%25AE__%25289%2529.jpg&type=sc960_832");
+    background-size: cover;
+    background-position: center 50%; /* 이미지 위치를 살짝 위로 올리기 위한 position 설정 */
+    background-repeat: no-repeat;
+    z-index: 1;
+    padding: 10px 100px 130px;
+}
+.navbar {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(47, 48, 89);
+    opacity: 0.8;
+    z-index: 2;
+  }
+
 .menu {
     display: flex;
     font-size: var(--font-medium);
@@ -58,12 +74,27 @@ header {
     border-bottom: 1px solid var(--grey-light-color);
     display: flex;
 }
-.buttons .btn {
+.buttons button{
     font-size: var(--font-medium);
-    margin: 25px 30px;
+    margin: 10px 30px;
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+.tour{
+    color: red;
+}
+.restaurant{
+    color: yellowgreen;
+}
+.store{
+    color:green;
+}
+.traffic{
+    color: blue;
+}
+.others{
+    color: purple;
 }
 
 @media screen and (max-width: 768px) {

@@ -12,17 +12,14 @@
     <!-- Header -->
     <header class="navbar">
         <div class="logo">
-            <span class="title">TalkingTravel</span>
+            <span class="title">트래블톡 in paris</span>
             <i class="fas fa-search"></i>
         </div>
-        <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">All Products</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#">Customer Service</a></li>
-        </ul>
         <div class="logIn">
-            <span class="log">LOGIN</span>
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="plane">
+            <i class="fa-solid fa-plane-departure"></i>
         </div>
         <a href="#" class="toogleBtn">
             <i class="fas fa-bars"></i>
@@ -31,14 +28,14 @@
 
     <!-- Buttons -->
     <section class="buttons">
-        <button class="btn" data-key="type" data-value="my room">관광명소</button>
-        <button class="btn" data-key="type" data-value="living room">음식점</button>
-        <button class="btn" data-key="type" data-value="kitchen">상점</button>
-        <button class="btn" data-key="type" data-value="bathroom">대중교통</button>
-        <button class="btn" data-key="type" data-value="entrance">기타 시설</button>
+        <button class="tour">관광명소</button>
+        <button class="restaurant">음식점</button>
+        <button class="store">상점</button>
+        <button class="traffic">대중교통</button>
+        <button class="others">기타 시설</button>
     </section>
 
-    <div id="map" style="height: 600px;"></div>
+    <div id="map" style="height: 700px;"></div>
 
     <!-- Items -->
     <ul class="items">
@@ -50,4 +47,12 @@
     <script defer src=
     "https://maps.googleapis.com/maps/api/js?key=AIzaSyApgcLznfOhJn0f4NCy6LmXfN_2sJJ0BXA&callback=initMap"></script>
 </body>
+<footer>
+    <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Country(paris, london)</a></li>
+        <li><a href="#">---</a></li>
+        <li><a href="#">Customer Service</a></li>
+    </ul>
+</footer>
 </html>

@@ -37,3 +37,18 @@ window.initMap = function () {
     map.fitBounds(bounds);
 };
 
+const mysql = require('mysql');
+    const con = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'seungjin1031!',
+        database: 'traveltalk'
+    });
+
+    // 이것은 express의 listen과도 같다. 서버에 정상접속하면 'Connected successfully'가 출력되도록
+    // 접속이 안됐을 시 에러가 뜨도록 하는 코드이다.
+    con.connect((err) => {
+        if(err) throw err;
+        console.log('Connected successfully');
+    })
+
