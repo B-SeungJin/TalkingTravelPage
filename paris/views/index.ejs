@@ -6,14 +6,30 @@
 </head>
 <body>
     <h1>테스트</h1>
-    <table>
-      <% for(i = 0; i < list.length; i++) { %>
-      <tr>
-        <td><%=i+1 %></td>
-        <td><%=list[i].NAME %></td>
-        <td><%=list[i].AGE %></td>
-      </tr>
-      <% } %>
-    </table>
+      <div id="map" style="height: 700px;"></div>
+      <script>
+        function initMap() {
+          const map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: {lat: 48.863769, lng: 2.312777}
+          });
+
+          var markers = []; // 요렇게 일단 다중 마커를 담을 변수를 만들어요.
+          for (i = 0; i < list.length; i++) {
+          //반복문으로 외부 데이터를 기반으로 마커를 생성해줍니다.
+            var latLng = new google.maps.LatLng(list[i].lat,
+            list[i].lng);
+            var marker = new google.maps.Marker({
+                        position: latLng,
+                        draggable: true,
+                        icon: markerImage
+                      });
+                markers.push(marker); //마커들을 markers 배열안에 넣습니다.
+          }
+        }
+    </script>
+    <script async defer src=
+    "https://maps.googleapis.com/maps/api/js?key=AIzaSyApgcLznfOhJn0f4NCy6LmXfN_2sJJ0BXA&callback=initMap">
+    </script>
 </body>
 </html>
