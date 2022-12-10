@@ -7,6 +7,7 @@ dbConfig.connect(conn);
 
 app.set('views', './paris/views')
 app.set('view engine', 'ejs');
+app.use(express.static('paris'));
 
 app.get('/', function (req, res) {
     res.send('메인');

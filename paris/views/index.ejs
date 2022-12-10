@@ -2,29 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARIS</title>
+    <script src="https://kit.fontawesome.com/ab5a57cf74.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script type="text/javascript" src="../category.js"></script>
 </head>
 <body>
-    <h1>테스트</h1>
-    <table>
-      <% for(i = 0; i < list.length; i++) { %>
-      <tr>
-        <td><%=i+1 %></td>
-        <td><%=list[i].lat %></td>
-        <td><%=list[i].lng %></td>
-        <td><%=list[i].placeName %></td>
-      </tr>
-      <% } %>
-    </table>
-      <div id="map" style="height: 700px;"></div>
+    <!-- Header -->
+    <header>
+      <div class="inner">
+        <div class="head-container">
+          <div class="head-brand"><a href="https://github.com/B-SeungJin">bsj_world</a></div>
+          <div class="head-blog"><a href="https://velog.io/@byeon1031">bsj_world 블로그 모음</a></div>
+        </div>
+      </div>
+    </header>
+    
+    <main class="main">
+      <!-- Side Bar -->
+      <aside class="sidebar">
+        <nav class="nav">
+          <ul>
+            <li class="active"><a href="#">Welcome</a></li>
+            <li><a href="#">Who We Are</a></li>
+            <li><a href="#">What We Do</a></li>
+            <li><a href="#">Get In Touch</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- GoogleMap & Buttons -->
+      <section class="container">
+        <div class="buttons">
+          <div class="button">
+            <i class="fa-solid fa-landmark skill-icon python-style"></i>
+            <div class="place" onclick='initMap()'>모든 장소</div>
+          </div>
+          <div class="button">
+            <i class="fa-solid fa-landmark skill-icon python-style"></i>
+            <div class="tour" onclick='initMapA()'>관광명소</div>
+          </div>
+          <div class="button">
+            <i class="fa-solid fa-fork-knife"></i>
+            <div class="restaurant" onclick='initMapB()'>음식점</div>
+          </div>
+          <div class="button">
+            <i class="fa-solid fa-landmark skill-icon python-style"></i>
+            <div class="store" onclick='initMapC()'>상점</div>
+          </div>
+          <div class="button">
+            <i class="fa-solid fa-landmark skill-icon python-style"></i>
+            <div class="traffic" onclick=''>대중교통</div>
+          </div>
+          <div class="button">
+            <i class="fa-solid fa-landmark skill-icon python-style"></i>
+            <div class="others" onclick=''>기타 시설</div>
+          </div>
+        </div>
+        <div id="map" style="height: 830px; width: 1280px;"></div>
+      </section>
+    </main>
+
+    <!-- 구글맵 api -->
       <script>
         let _list = "<%= JSON.stringify(list) %>";
+
 
         _list = _list.replaceAll('&#34;', '\"');
         _list = JSON.parse(_list);
         console.log(_list)
         console.log(_list.length)
-        
+
+        var markers = [];
         function initMap() {
           const map = new google.maps.Map(document.getElementById('map'), {
             zoom: 12,
@@ -35,29 +86,41 @@
           const infowindow = new google.maps.InfoWindow();
 
           var i, label;
+
           _list.forEach(({ placeType, placeName, lat, lng }) => {
-            const marker = new google.maps.Marker({
-              position: { lat, lng },
-              placeType,
-              map: map
-            });
-            bounds.extend(marker.position);
-
-            marker.addListener("click", () => {
-              map.panTo(marker.position);
-              infowindow.setContent(placeName);
-              infowindow.open({
-                anchor: marker,
-                map,
-              });
-            });
+            if (placeType == 'A' || placeType == 'B' || placeType == 'C') {
+                const marker = new google.maps.Marker({
+                  position: { lat, lng },
+                  label: placeType,
+                  map: map
+                });
+                bounds.extend(marker.position);
+                marker.addListener("click", () => {
+                  map.panTo(marker.position);
+                  infowindow.setContent(placeName);
+                  infowindow.open({
+                    anchor: marker,
+                    map,
+                  });
+                });
+                markers.push(marker)
+              }
           });
-
           map.fitBounds(bounds);
+          
         }
+        
     </script>
-    <script async defer src=
+    <script defer src=
     "https://maps.googleapis.com/maps/api/js?key=AIzaSyApgcLznfOhJn0f4NCy6LmXfN_2sJJ0BXA&callback=initMap">
     </script>
 </body>
+<footer>
+    <ul class="list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Country(paris, london)</a></li>
+        <li><a href="#">---</a></li>
+        <li><a href="#">Customer Service</a></li>
+    </ul>
+</footer>
 </html>
