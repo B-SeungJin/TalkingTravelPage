@@ -9,6 +9,7 @@
     <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../css/style.css"/>
     <script type="text/javascript" src="../category.js"></script>
+    <script></script>
 </head>
 <body>
     <!-- Header -->
@@ -30,11 +31,11 @@
         <div class="side-container">
           <!-- <img id = "sideImg" src="/paris/img/파리 배경.jpg" alt="파리 배경" style="width: 413px; height: 935px;"> -->
           <div class="title">PARIS</div>
-            <div class="message">
-              원하는 장소를 클릭하시면<br />
-              해당 장소에서 사용되는 회화를<br />
-              자연스레 익힐 수 있습니다.
-            </div>
+          <div class="message">
+            If you click the place you want,<br />
+            you can naturally learn<br />
+            the conversation used in that place.
+          </div>
           </div>
       </aside>
 
@@ -71,59 +72,56 @@
 
     _list = _list.replaceAll('&#34;', '\"');
     _list = JSON.parse(_list);
-    console.log(_list.length)
+
+    JSON.parse(localStorage.getItem("cast"));
+    console.log(cast.img1);
+    console.log(cast.img2);
 
     var markers = [];
     function initMap() {
-      const map = new google.maps.Map(document.getElementById('map'), {
+    const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: {lat: 48.863769, lng: 2.312777}
-      });
+    });
 
-      const bounds = new google.maps.LatLngBounds();
-      const infowindow = new google.maps.InfoWindow();
+    const bounds = new google.maps.LatLngBounds();
+    const infowindow = new google.maps.InfoWindow();
 
-      var i, label;
-      var myIcon = new google.maps.MarkerImage("../img/마커2.png", null, null, null, new google.maps.Size(30,25));
-      // var info = '<div class="wrap"><div class="text-box"><h4>경복궁</h4><div class="img-box"><img src="https://image.shutterstock.com/image-vector/palace-icon-outline-vector-web-260nw-1046855677.jpg"></img></div><div onclick = "info()">홈페이지 방문하기</div></div></div>';
+    var i, label;
+    var myIcon = new google.maps.MarkerImage("../img/마커2.png", null, null, null, new google.maps.Size(30,25));
+    // var info = '<div class="wrap"><div class="text-box"><h4>경복궁</h4><div class="img-box"><img src="https://image.shutterstock.com/image-vector/palace-icon-outline-vector-web-260nw-1046855677.jpg"></img></div><div onclick = "info()">홈페이지 방문하기</div></div></div>';
 
-      _list.forEach(({ id, placeType, placeName, lat, lng, imgUrl_1, imgUrl_2, imgUrl_3}) => {
+    _list.forEach(({ id, placeType, placeName, lat, lng, imgUrl_1}) => {
         if (placeType == 'A' || placeType == 'B' || placeType == 'C' || placeType == 'D' || placeType == 'E') {
             const marker = new google.maps.Marker({
-              position: { lat, lng },
-              map: map,
-              icon: myIcon
+            position: { lat, lng },
+            map: map,
+            icon: myIcon
             });
             bounds.extend(marker.position);
             
             marker.addListener("mouseover", () => {
-              infowindow.setContent(placeName);
-              infowindow.open({
+            infowindow.setContent(placeName);
+            infowindow.open({
                 anchor: marker,
                 map,
-              });
+            });
             });
             marker.addListener("click", () => {
-              map.panTo(marker.position);
-              // clickAbout();
-              document.getElementById("placeImg").src = imgUrl_1;
-              const placeId = id;
-              var cast = {
-                "img1" : "imgUrl_1",
-                "img2" : "imgUrl_2",
-                "img3" : "imgUrl_3"
-              };
-              localStorage.setItem("cast", JSON.stringify(cast));
+            map.panTo(marker.position);
+            clickAbout();
+            // document.getElementById("placeImg").src = imgUrl_1;
+
             });
             markers.push(marker)
-          }
-      });
-      map.fitBounds(bounds);
+        }
+    });
+    map.fitBounds(bounds);
     }
 
     function clickAbout(){
-      location.href = "/about";
-      // document.getElementById("placeImg").innerHTML="안녕하세요.";
+    location.href = "/about";
+    // document.getElementById("placeImg").innerHTML="안녕하세요.";
     }
 
     </script>

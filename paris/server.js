@@ -5,6 +5,8 @@ var conn = dbConfig.init();
 
 dbConfig.connect(conn);
 
+app.engine('html', require('ejs').renderFile); // html 용
+
 app.set('views', './paris/views')
 app.set('view engine', 'ejs');
 app.use(express.static('paris'));
@@ -18,6 +20,14 @@ app.get('/List', function (req, res) {
     conn.query(sql, function (err, rows, fields) {
         if(err) console.log('query is not excuted. select fail...\n' + err);
         res.render('index', {list : rows});
+    });
+});
+
+app.get('/about', function (req, res) {
+    var sql = "SELECT * FROM place";
+    conn.query(sql, function (err, rows, fields) {
+        if(err) console.log('query is not excuted. select fail...\n' + err);
+        res.render('about', {list : rows});
     });
 });
 

@@ -5,8 +5,6 @@ function hideMarkers() {
   }
 } // 마커 숨기는 코드 
 
-
-
 function initMapA() {
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
