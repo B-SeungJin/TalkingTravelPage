@@ -84,6 +84,16 @@ header {
     z-index: 1;
     opacity: 0.4;
 }
+.aboutSidebar{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 826px;
+    height: 935px;
+    background-color:skyblue; 
+    z-index: -1;
+    opacity: 0.3;
+}
 
 /* .side-container{
     width: 100%;
@@ -109,7 +119,52 @@ header {
     color: #fff;
     font-size: 1.2rem;
 }
-
+.aboutSidebar .side-container .title{
+    font-size: 2.2rem;
+}
+.aboutSidebar .side-container .message{
+    font-size: 1.1rem;
+}
+.exit{
+    position: absolute;
+    bottom: 0;
+    left: 700px;
+    font-size: 1.5rem;
+}
+/* COMMUNICATE */
+.communicate{
+    font-weight: bold;
+    color: yellow;
+    font-size: 1.5rem;
+}
+.communicate .he .he1{
+    text-align: right;
+    position: absolute;
+    bottom: 450px;
+    left: 300px;
+}
+.communicate .he .he2{
+    text-align: right;
+    position: absolute;
+    bottom: 300px;
+    left: 300px;
+}
+.communicate .he .he3{
+    text-align: right;
+    position: absolute;
+    bottom: 150px;
+    left: 300px;
+}
+.communicate .she .she1{
+    position: absolute;
+    bottom: 375px;
+    left: 50px;
+}
+.communicate .she .she2{
+    position: absolute;
+    bottom: 225px;
+    left: 50px;
+}
 /* .list {
     display: flex;
     font-size: var(--font-medium);

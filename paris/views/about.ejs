@@ -25,18 +25,31 @@
     <main class="main">
       <!-- Side Bar -->
       <img id = "placeImg" referrerpolicy="no-referrer" src="" alt=""
-            style="width: 413px; height: 370px;">
-
-      <aside class="sidebar">
+            style="width: 440px; height: 413px;">
+      <aside class="aboutSidebar">
         <div class="side-container">
-          <!-- <img id = "sideImg" src="/paris/img/파리 배경.jpg" alt="파리 배경" style="width: 413px; height: 935px;"> -->
-          <div class="title">PARIS</div>
+          <div class="title">루브르 박물관</div>
           <div class="message">
-            If you click the place you want,<br />
-            you can naturally learn<br />
-            the conversation used in that place.
+            프랑스 파리에 있는 크고 아름다운 박물관<br />
+            세계 3대 박물관으로 흔히 꼽히며<br />
+            레오나르도 다빈치의 모나리자,<br />
+            밀로의 비너스, 사모트라케의 니케가<br />
+            루브르 3대 대표작으로 꼽히며<br />
+            그 외에도 명작들이 셀 수 없이 많다.<br />
           </div>
+        </div>
+        <div class="communicate">
+          <div class="he">
+            <div class="he1">안녕하세요, 혹시 사진 좀 찍어주실 수 있을까요?</div>
+            <div class="he2">아 감사합니다. 실례가 안된다면 저도 찍어드릴까요?</div>
+            <div class="he3">네, 좋은 하루 되세요.</div>
           </div>
+          <div class="she">
+            <div class="she1">네, 잘 찍어드릴게요. 하나 둘 셋</div>
+            <div class="she2">아하, 저는 괜찮습니다. 좋은 여행 되세요.</div>
+          </div>
+        </div>
+        <button class="exit" onclick="goHome()">EXIT</button>
       </aside>
 
       <!-- GoogleMap & Buttons -->
@@ -61,7 +74,7 @@
             <div class="others" onclick='initMapE()'>기타 시설</div>
           </div>
         </div>
-        <div id="map" style="height: 810px; width: 1245px;"></div>
+        <div id="map" style="height: 810px; width: 825px;"></div>
       </section>
     </main>
 
@@ -73,14 +86,19 @@
     _list = _list.replaceAll('&#34;', '\"');
     _list = JSON.parse(_list);
 
-    JSON.parse(localStorage.getItem("cast"));
-    console.log(cast.img1);
-    console.log(cast.img2);
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+      return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    };
+    
+    var placeId = getParameterByName('type');
 
     var markers = [];
     function initMap() {
     const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 30,
         center: {lat: 48.863769, lng: 2.312777}
     });
 
@@ -92,36 +110,32 @@
     // var info = '<div class="wrap"><div class="text-box"><h4>경복궁</h4><div class="img-box"><img src="https://image.shutterstock.com/image-vector/palace-icon-outline-vector-web-260nw-1046855677.jpg"></img></div><div onclick = "info()">홈페이지 방문하기</div></div></div>';
 
     _list.forEach(({ id, placeType, placeName, lat, lng, imgUrl_1}) => {
+        if (id == placeId) {
+          document.getElementById("placeImg").src = imgUrl_1;
+        };
         if (placeType == 'A' || placeType == 'B' || placeType == 'C' || placeType == 'D' || placeType == 'E') {
-            const marker = new google.maps.Marker({
-            position: { lat, lng },
-            map: map,
-            icon: myIcon
-            });
-            bounds.extend(marker.position);
-            
-            marker.addListener("mouseover", () => {
-            infowindow.setContent(placeName);
-            infowindow.open({
-                anchor: marker,
-                map,
-            });
-            });
-            marker.addListener("click", () => {
-            map.panTo(marker.position);
-            clickAbout();
-            // document.getElementById("placeImg").src = imgUrl_1;
-
-            });
-            markers.push(marker)
+          const marker = new google.maps.Marker({
+          position: { lat, lng },
+          map: map,
+          icon: myIcon
+          });
+          bounds.extend(marker.position);
+          
+          marker.addListener("mouseover", () => {
+          infowindow.setContent(placeName);
+          infowindow.open({
+              anchor: marker,
+              map,
+          });
+          });
+          markers.push(marker)
         }
-    });
-    map.fitBounds(bounds);
+      });
+      map.fitBounds(bounds);
     }
 
-    function clickAbout(){
-    location.href = "/about";
-    // document.getElementById("placeImg").innerHTML="안녕하세요.";
+    function goHome(){
+      location.href = "/List";
     }
 
     </script>

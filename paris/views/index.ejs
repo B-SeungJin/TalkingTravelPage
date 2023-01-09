@@ -23,9 +23,6 @@
     
     <main class="main">
       <!-- Side Bar -->
-      <img id = "placeImg" referrerpolicy="no-referrer" src="" alt=""
-            style="width: 413px; height: 370px;">
-
       <aside class="sidebar">
         <div class="side-container">
           <!-- <img id = "sideImg" src="/paris/img/파리 배경.jpg" alt="파리 배경" style="width: 413px; height: 935px;"> -->
@@ -71,9 +68,10 @@
 
     _list = _list.replaceAll('&#34;', '\"');
     _list = JSON.parse(_list);
-    console.log(_list.length)
 
     var markers = [];
+    var type;
+
     function initMap() {
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
@@ -105,24 +103,22 @@
             });
             marker.addListener("click", () => {
               map.panTo(marker.position);
-              // clickAbout();
-              document.getElementById("placeImg").src = imgUrl_1;
-              const placeId = id;
-              var cast = {
-                "img1" : "imgUrl_1",
-                "img2" : "imgUrl_2",
-                "img3" : "imgUrl_3"
-              };
-              localStorage.setItem("cast", JSON.stringify(cast));
+              type = id;
+              clickAbout(type);
+              // document.getElementById("placeImg").src = imgUrl_1;
+              // const placeId = id;
+              // localStorage.setItem("cast", JSON.stringify(cast));
             });
             markers.push(marker)
           }
-      });
-      map.fitBounds(bounds);
-    }
+        });
+        map.fitBounds(bounds);
+      }
 
     function clickAbout(){
-      location.href = "/about";
+      // id값 전달 -> about페이지에서 이미지 출력
+      // 
+      location.href = "/about?type="+type;
       // document.getElementById("placeImg").innerHTML="안녕하세요.";
     }
 
