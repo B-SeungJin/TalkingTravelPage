@@ -29,6 +29,7 @@
           <div class="title">PARIS</div>
             <div class="message">
               원하는 장소를 클릭하시면<br />
+              간접 여행과 함께<br />
               해당 장소에서 사용되는 회화를<br />
               자연스레 익힐 수 있습니다.
             </div>
@@ -82,10 +83,10 @@
       const infowindow = new google.maps.InfoWindow();
 
       var i, label;
-      var myIcon = new google.maps.MarkerImage("../img/마커2.png", null, null, null, new google.maps.Size(30,25));
+      var myIcon = new google.maps.MarkerImage("../img/marker.png", null, null, null, new google.maps.Size(60,40));
       // var info = '<div class="wrap"><div class="text-box"><h4>경복궁</h4><div class="img-box"><img src="https://image.shutterstock.com/image-vector/palace-icon-outline-vector-web-260nw-1046855677.jpg"></img></div><div onclick = "info()">홈페이지 방문하기</div></div></div>';
 
-      _list.forEach(({ id, placeType, placeName, lat, lng, imgUrl_1, imgUrl_2, imgUrl_3}) => {
+      _list.forEach(({ id, placeType, placeName, lat, lng}) => {
         if (placeType == 'A' || placeType == 'B' || placeType == 'C' || placeType == 'D' || placeType == 'E') {
             const marker = new google.maps.Marker({
               position: { lat, lng },
@@ -105,9 +106,6 @@
               map.panTo(marker.position);
               type = id;
               clickAbout(type);
-              // document.getElementById("placeImg").src = imgUrl_1;
-              // const placeId = id;
-              // localStorage.setItem("cast", JSON.stringify(cast));
             });
             markers.push(marker)
           }

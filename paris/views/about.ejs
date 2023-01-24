@@ -27,7 +27,8 @@
       <aside class="aboutSidebar">
         <img id = "placeImg" referrerpolicy="no-referrer" src="" alt=""
             style="width: 500px; height: 440px;">
-        <button class="nextImg">다음 사진<i class="fa-solid fa-chevron-right"></i></button>
+        <button class="backImg" onclick="backImage(imgNum)">이전 사진<i class="fa-solid fa-chevron-right"></i></button>
+        <button class="frontImg" onclick="frontImage(imgNum)">다음 사진<i class="fa-solid fa-chevron-right"></i></button>
         <div class="side-container">
           <h2 id="title">장소 이름</h2>
           <textarea id="message" cols="25" rows="10" readonly>장소에 대한 정보를 여기에 삽입한다.
@@ -36,19 +37,24 @@
             그 후, 현재 프로젝트를 react로 재구성하면서 완성해나간다.
           </textarea>
         </div>
+        <div class="top1">문장</div>
         <div class="commuList">
-          <div class="box-init"><p id="box1">문장</p></div>
-          <div class="box-init"><p id="box2">A</p></div>
-          <div class="box-init"><p id="box3">B</p></div> 
-          <div class="box-init"><p id="box4">C</p></div> 
-          <div class="box-init"><p id="box5">D</p></div> 
-          <div class="box-init"><p id="box6">E</p></div> 
-          <div class="box-init"><p id="box7">F</p></div>
-          <div class="box-init"><p id="box8">G</p></div> 
-          <div class="box-init"><p id="box9">H</p></div> 
-          <div class="box-init"><p id="box10">I</p></div> 
+          <div class="box-init"><p id="box1">A</p></div>
+          <div class="box-init"><p id="box2">B</p></div>
+          <div class="box-init"><p id="box3">C</p></div> 
+          <div class="box-init"><p id="box4">D</p></div> 
+          <div class="box-init"><p id="box5">E</p></div> 
+          <div class="box-init"><p id="box6">F</p></div> 
+          <div class="box-init"><p id="box7">G</p></div>
+          <div class="box-init"><p id="box8">H</p></div> 
+          <div class="box-init"><p id="box9">I</p></div> 
         </div>
         <div class="communicate">
+          <div class="top2">대화</div>
+          <div class="they"><p id="he1">주문하시겠어요?</p></div>
+          <div class="they"><p id="she1">네, 주문할게요</p></div>
+          <div class="they"><p id="he2">어떤 것으로 드시겠어요?</p></div>
+          <div class="they"><p id="she2">이걸로 주세요.</p></div>
         </div>
         <button class="exit" onclick="goHome()">EXIT</button>
       </aside>
@@ -107,7 +113,7 @@
     const infowindow = new google.maps.InfoWindow();
 
     var i, label;
-    var myIcon = new google.maps.MarkerImage("../img/마커2.png", null, null, null, new google.maps.Size(30,25));
+    var myIcon = new google.maps.MarkerImage("../img/marker.png", null, null, null, new google.maps.Size(60,40));
     // var info = '<div class="wrap"><div class="text-box"><h4>경복궁</h4><div class="img-box"><img src="https://image.shutterstock.com/image-vector/palace-icon-outline-vector-web-260nw-1046855677.jpg"></img></div><div onclick = "info()">홈페이지 방문하기</div></div></div>';
 
     _list.forEach(({ id, placeType, placeName, lat, lng, imgUrl_1}) => {
@@ -169,6 +175,60 @@
       if (placeS == 'E'){
         document.getElementById("box2").innerText = sentenceE[0];
         document.getElementById("box3").innerText = sentenceE[1];
+      }
+    }
+
+    var imgNum = 1;
+
+    function backImage(imgNum){
+      imgNum = imgNum - 1;
+      if(imgNum < 1){
+        imgNum = 1
+      }
+      console.log(imgNum);
+      
+    }
+
+    function frontImage(imgNum){
+      imgNum = imgNum + 1;
+      _list.forEach(({id, imgUrl_1, imgUrl_2, imgUrl_3, imgUrl_4, imgUrl_5, imgUrl_6}) => {
+        if (id == placeId){
+          if (imgNum == 2){
+            if(imgUrl_2 != null) {
+              document.getElementById("placeImg").src = imgUrl_2;
+            }
+            // else {imgNum = imgNum -1}
+          };
+          if (imgNum == 3){
+            if(imgUrl_3 != null) {
+              document.getElementById("placeImg").src = imgUrl_3;
+            }
+            // else {imgNum = imgNum -1}
+          };
+          if (imgNum == 4){
+            if(imgUrl_4 != null) {
+              document.getElementById("placeImg").src = imgUrl_4;
+            }
+            // else {imgNum = imgNum -1}
+          };
+          if (imgNum == 5){
+            if(imgUrl_5 != null) {
+              document.getElementById("placeImg").src = imgUrl_5;
+            }
+            else {imgNum = imgNum -1}
+          };
+          if (imgNum == 6){
+            if(imgUrl_6 != null) {
+              document.getElementById("placeImg").src = imgUrl_6;
+            }
+            else {imgNum = imgNum -1}
+          };
+        }
+      });
+      console.log(imgNum);
+      return function(){
+        imgNum += 1;
+        return imgNum;
       }
     }
 

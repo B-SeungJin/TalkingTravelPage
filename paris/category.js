@@ -1,4 +1,3 @@
-
 function hideMarkers() {
   for (let i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
@@ -15,9 +14,9 @@ function initMapA() {
   const infowindow = new google.maps.InfoWindow();
 
   var i, label;
-  var myIcon = new google.maps.MarkerImage("../img/마커2.png", null, null, null, new google.maps.Size(30,25));
+  var myIcon = new google.maps.MarkerImage("../img/marker.png", null, null, null, new google.maps.Size(60,40));
   
-  _list.forEach(({ placeType, placeName, lat, lng, imgUrl_1}) => {
+  _list.forEach(({ id, placeType, placeName, lat, lng}) => {
     if (placeType == 'A') {
         const marker = new google.maps.Marker({
           position: { lat, lng },
@@ -35,12 +34,13 @@ function initMapA() {
         });
         marker.addListener("click", () => {
           map.panTo(marker.position);
+          type = id;
+          clickAbout(type);
         });
         markers.push(marker)
       }
-  });
-  map.fitBounds(bounds);
-  
+    });
+    map.fitBounds(bounds);
 }
 
 function initMapB() {
@@ -53,26 +53,33 @@ function initMapB() {
   const infowindow = new google.maps.InfoWindow();
 
   var i, label;
-  _list.forEach(({ placeType, placeName, lat, lng }) => {
+  var myIcon = new google.maps.MarkerImage("../img/marker.png", null, null, null, new google.maps.Size(60,40));
+
+  _list.forEach(({ id, placeType, placeName, lat, lng}) => {
     if (placeType == 'B') {
         const marker = new google.maps.Marker({
           position: { lat, lng },
-          label: placeType,
-          map: map
+          map: map,
+          icon: myIcon
         });
-        markers.push(marker)
         bounds.extend(marker.position);
-        marker.addListener("click", () => {
-          map.panTo(marker.position);
+        
+        marker.addListener("mouseover", () => {
           infowindow.setContent(placeName);
           infowindow.open({
             anchor: marker,
             map,
           });
         });
+        marker.addListener("click", () => {
+          map.panTo(marker.position);
+          type = id;
+          clickAbout(type);
+        });
+        markers.push(marker)
       }
-  });
-  map.fitBounds(bounds);
+    });
+    map.fitBounds(bounds);
 }
 
 function initMapC() {
@@ -85,26 +92,33 @@ function initMapC() {
   const infowindow = new google.maps.InfoWindow();
 
   var i, label;
-  _list.forEach(({ placeType, placeName, lat, lng }) => {
+  var myIcon = new google.maps.MarkerImage("../img/marker.png", null, null, null, new google.maps.Size(60,40));
+
+  _list.forEach(({ id, placeType, placeName, lat, lng}) => {
     if (placeType == 'C') {
         const marker = new google.maps.Marker({
           position: { lat, lng },
-          label: placeType,
-          map: map
+          map: map,
+          icon: myIcon
         });
-        markers.push(marker)
         bounds.extend(marker.position);
-        marker.addListener("click", () => {
-          map.panTo(marker.position);
+        
+        marker.addListener("mouseover", () => {
           infowindow.setContent(placeName);
           infowindow.open({
             anchor: marker,
             map,
           });
         });
+        marker.addListener("click", () => {
+          map.panTo(marker.position);
+          type = id;
+          clickAbout(type);
+        });
+        markers.push(marker)
       }
-  });
-  map.fitBounds(bounds);
+    });
+    map.fitBounds(bounds);
 }
 
 function initMapD() {
@@ -117,26 +131,33 @@ function initMapD() {
   const infowindow = new google.maps.InfoWindow();
 
   var i, label;
-  _list.forEach(({ placeType, placeName, lat, lng }) => {
+  var myIcon = new google.maps.MarkerImage("../img/marker.png", null, null, null, new google.maps.Size(60,40));
+
+  _list.forEach(({ id, placeType, placeName, lat, lng}) => {
     if (placeType == 'D') {
         const marker = new google.maps.Marker({
           position: { lat, lng },
-          label: placeType,
-          map: map
+          map: map,
+          icon: myIcon
         });
-        markers.push(marker)
         bounds.extend(marker.position);
-        marker.addListener("click", () => {
-          map.panTo(marker.position);
+        
+        marker.addListener("mouseover", () => {
           infowindow.setContent(placeName);
           infowindow.open({
             anchor: marker,
             map,
           });
         });
+        marker.addListener("click", () => {
+          map.panTo(marker.position);
+          type = id;
+          clickAbout(type);
+        });
+        markers.push(marker)
       }
-  });
-  map.fitBounds(bounds);
+    });
+    map.fitBounds(bounds);
 }
 
 function initMapE() {
@@ -149,27 +170,35 @@ function initMapE() {
   const infowindow = new google.maps.InfoWindow();
 
   var i, label;
-  _list.forEach(({ placeType, placeName, lat, lng }) => {
+  var myIcon = new google.maps.MarkerImage("../img/marker.png", null, null, null, new google.maps.Size(60,40));
+
+  _list.forEach(({ id, placeType, placeName, lat, lng}) => {
     if (placeType == 'E') {
         const marker = new google.maps.Marker({
           position: { lat, lng },
-          label: placeType,
-          map: map
+          map: map,
+          icon: myIcon
         });
-        markers.push(marker)
         bounds.extend(marker.position);
-        marker.addListener("click", () => {
-          map.panTo(marker.position);
+        
+        marker.addListener("mouseover", () => {
           infowindow.setContent(placeName);
           infowindow.open({
             anchor: marker,
             map,
           });
         });
+        marker.addListener("click", () => {
+          map.panTo(marker.position);
+          type = id;
+          clickAbout(type);
+        });
+        markers.push(marker)
       }
-  });
-  map.fitBounds(bounds);
+    });
+    map.fitBounds(bounds);
 }
+
 
 
  
