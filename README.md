@@ -15,3 +15,4 @@
 나의 첫 프로젝트이고, 나만의 프로젝트라 더욱 애정이 가고 하나하나 발전시켜 보고싶다.
 
 ![image](https://user-images.githubusercontent.com/96096917/214864373-6071f432-8be0-4f1a-a508-9ea8cc0c3403.png)
+![image](https://user-images.githubusercontent.com/96096917/214864714-8de9ee62-2142-4534-9d77-1a5b2da2dd2d.png)
